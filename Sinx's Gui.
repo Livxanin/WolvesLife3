@@ -1,0 +1,1004 @@
+-- Made by Sinx/Liv
+-- (Credits: GrumpyNemo#5103, Syr0nix#3363 And Other Scripters.)
+
+local MAIN20 = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Access = Instance.new("TextLabel")
+local Explorer = Instance.new("TextButton")
+local Rainbow = Instance.new("TextButton")
+local Spawn = Instance.new("TextButton")
+local VIW = Instance.new("TextButton")
+local AutoBio = Instance.new("TextButton")
+local Coins = Instance.new("TextButton")
+local Customizer = Instance.new("TextButton")
+local Fates = Instance.new("TextButton")
+local GamePasses = Instance.new("TextButton")
+local Infyeild = Instance.new("TextButton")
+local Neon = Instance.new("TextButton")
+
+--
+
+MAIN20.Name = "MAIN 2.0"
+MAIN20.Parent = game.CoreGui
+
+Frame.Parent = MAIN20
+Frame.BackgroundColor3 = Color3.fromRGB(29, 29, 29)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.559274733, 0, 0.102880687, 0)
+Frame.Size = UDim2.new(0, 280, 0, 190)
+Frame.Active = true
+Frame.Draggable = true
+
+Access.Name = "Access"
+Access.Parent = Frame
+Access.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Access.Position = UDim2.new(0.00181210041, 0, 0.00187750917, 0)
+Access.Size = UDim2.new(0, 155, 0, 27)
+Access.Font = Enum.Font.TitilliumWeb
+Access.Text = "Liv's GUI | Access granted"
+Access.TextColor3 = Color3.fromRGB(63, 15, 255)
+Access.TextSize = 14.000
+
+Explorer.Name = "Explorer"
+Explorer.Parent = Frame
+Explorer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Explorer.Position = UDim2.new(0.634668648, 0, 0.62188071, 0)
+Explorer.Size = UDim2.new(0, 63, 0, 19)
+Explorer.Font = Enum.Font.Ubuntu
+Explorer.Text = "Explorer"
+Explorer.TextColor3 = Color3.fromRGB(0, 17, 255)
+Explorer.TextSize = 14.000
+Explorer.MouseButton1Down:connect(function()
+	TextProperties = {"ClassName", "Name", "Value", "Text", "Reflectance", "Transparency", "Heat", "TeamName", "WalkSpeed", "Health", "MaxHealth", "Size", "Position", "AccountAge", "RobloxLocked", "TeamColor", "userId", "Brightness", "Ambient", "TimeOfDay", "FieldOfView", "CameraType", "LinkedSource"}
+	BoolProperties = {"Anchored", "CanCollide", "Disabled", "Jump", "Sit", "Visible", "Enabled", "Locked", "FilteringEnabled", "StreamingEnabled", "GlobalShadows"}
+	BrickColorProperties = {"BrickColor", "Color", "TeamColor", "Texture", "Value"}
+	s = Instance.new("ScreenGui", game.CoreGui)
+	pgr = Instance.new("TextButton")
+	pgr.Parent = s
+	pgr.Size = UDim2.new(0,100,0,40)
+	pgr.Position = UDim2.new(0,30,0,440)
+	pgr.Text="Explorer"
+	pgr.BackgroundTransparency = 0.3
+	pgr.TextColor = BrickColor.new("White")
+	pgr.BackgroundColor = BrickColor.new("Really Black")
+	pgr.BorderColor = BrickColor.new("Black")
+	pgr.Font = "ArialBold"
+	pgr.FontSize = "Size14"
+	pgr.TextStrokeColor3 = Color3.new(0/0,0/0,0/0)
+	pgr.TextStrokeTransparency = 0.3
+	pgr.BorderSizePixel = 1
+	pgr.BorderColor = BrickColor.new("White")
+
+	if game.CoreGui:findFirstChild("Explorer") then 
+		game.CoreGui:findFirstChild("Explorer"):Remove() 
+	end
+
+	local Cloned
+	local Deleted
+	local DeleteParent
+	local Player
+	local Search
+	local ScriptSearch
+	local Gui
+	local Cloned = nil
+	local Deleted = nil
+	local DeleteParent = nil
+	local Current = 0
+	local CurrentOption = 0
+
+	function Clear()
+		if Gui then 
+			Gui:Remove() 
+		end
+		Current = 0
+		CurrentOption = 0
+	end
+
+	function AddButton(N, Function, Color, Copy)
+		if not N then 
+			error("RenderButton - No Name Specified")
+		end
+		if not Function then 
+			error("RenderButton - No Function Specified") 
+		end
+		if not Color then 
+			Color = Color3.new(1, 1, 1) 
+		end
+		if Copy == nil then 
+			Copy = true 
+		end
+		P = Instance.new("TextButton")
+		if Copy then
+			P.Size = UDim2.new(0, 110, 0, 20)
+		else
+			P.Size = UDim2.new(0, 130, 0, 20)
+		end
+		P.Text = N.Name
+		P.Name = N.Name
+		P.Parent = Gui
+		P.BackgroundColor3 = Color
+		P.TextColor3 = Color3.new(0, 0, 0)
+		P.BackgroundTransparency = 0.5
+		P.Position = UDim2.new(0, ((math.modf(Current/30))*150)+300, 0, 50+(20*((Current%30)-1)))
+		P.MouseButton1Click:connect(function() 
+			Function(P) 
+		end)
+		D = Instance.new("TextButton")
+		D.Size = UDim2.new(0, 20, 0, 20)
+		D.Text = "X"
+		D.Name = N.Name
+		D.Parent = Gui
+		D.BackgroundColor3 = Color3.new(1, 0, 0)
+		D.TextColor3 = Color3.new(0, 0, 0)
+		D.BackgroundTransparency = 0.5
+		D.Position = UDim2.new(0, ((math.modf(Current/30))*150)+300+130, 0, 50+(20*((Current%30)-1)))
+		D.MouseButton1Click:connect(function()
+			Deleted = N
+			DeleteParent = N.Parent
+			N.Parent = nil
+			Clear()
+			Search(DeleteParent)
+		end)
+		if Copy then
+			C = Instance.new("TextButton")
+			C.Size = UDim2.new(0, 20, 0, 20)
+			C.Text = "C"
+			C.Name = N.Name
+			C.Parent = Gui
+			C.BackgroundColor3 = Color3.new(0, 1, 0.5)
+			C.TextColor3 = Color3.new(0, 0, 0)
+			C.BackgroundTransparency = 0.5
+			C.Position = UDim2.new(0, ((math.modf(Current/30))*150)+300+110, 0, 50+(20*((Current%30)-1)))
+			C.MouseButton1Click:connect(function()
+				Cloned = N
+				Clear()
+				Search(N.Parent)
+			end)
+		end
+		Current = Current + 1
+		return P
+	end
+
+	function AddOption(N, Function, Color, Text)
+		if not N then 
+			error("RenderButton - No Name Specified") 
+		end
+		if not Color then 
+			Color = Color3.new(1, 1, 1) 
+		end
+		if Text == nil then 
+			Text = false 
+		end
+		if Text then
+			P = Instance.new("TextBox")
+		else
+			P = Instance.new("TextButton")
+		end
+		P.Text = N
+		P.Name = N
+		P.Parent = Gui
+		P.BackgroundColor3 = Color
+		P.TextColor3 = Color3.new(0, 0, 0)
+		P.BackgroundTransparency = 0.5
+		P.Size = UDim2.new(0, 150, 0, 20)
+		P.Position = UDim2.new(0, ((math.modf(CurrentOption/30))*150)+150, 0, 50+(20*((CurrentOption%30)-1)))
+		if not Text and Function then
+			P.MouseButton1Click:connect(function() Function(P) end)
+		end
+		CurrentOption = CurrentOption + 1
+		return P
+	end
+
+	function AddTextOption(Obj, Prop)
+		local Ob = Obj
+		local Pro = Prop
+		if type(Ob[Pro]) == "number" or type(Ob[Pro]) == "string" then
+			CurrentOption = CurrentOption + 1
+			local T = AddOption(Ob[Pro], nil, Color3.new(0.1, 0.4, 0.1), true)
+			CurrentOption = CurrentOption - 2
+			local O = AddOption("Change "..Pro..":", function() Ob[Pro] = T.Text end, Color3.new(0.1, 0.8, 0.1), false)
+			CurrentOption = CurrentOption + 1
+		end
+	end
+
+	function AddBrickColorOption(Obj, Prop)
+		local Ob = Obj
+		local Pro = Prop
+		if BrickColor.new(tostring(Ob[Pro])) == Ob[Pro] then
+			CurrentOption = CurrentOption + 1
+			local T = AddOption(tostring(Ob[Pro]), nil, Color3.new(0.1, 0.4, 0.1), true)
+			CurrentOption = CurrentOption - 2
+			local O = AddOption("Change "..Pro..":", function() Ob[Pro] = BrickColor.new(T.Text) end, Color3.new(0.1, 0.8, 0.1), false)
+			CurrentOption = CurrentOption + 1
+		end
+	end
+
+	function AddBoolOption(Obj, Prop)
+		local Ob = Obj
+		local Pro = Prop
+		if type(Ob[Pro]) == "boolean" then
+			local O = AddOption(Pro..": "..tostring(Ob[Pro]), nil, Color3.new(0.1, 0.8, 0.1), false)
+			O.MouseButton1Click:connect(function()
+				if Ob[Pro] then
+					Ob[Pro] = false
+					O.Text = Pro..": false"
+				else
+					Ob[Pro] = true
+					O.Text = Pro..": true"
+				end
+			end)
+		end
+	end
+
+	function TestProperty(Obj, Property)
+		Success = pcall(function() 
+			if Obj[Property] then 
+				return 
+			end 
+		end)
+		return Success
+	end
+
+	function LoadOptions(Object)
+		for Num, Prop in pairs(TextProperties) do
+			if TestProperty(Object, Prop) then
+				AddTextOption(Object, Prop)
+			end
+		end
+		for Num, Prop in pairs(BoolProperties) do
+			if TestProperty(Object, Prop) then
+				AddBoolOption(Object, Prop)
+			end
+		end
+		for Num, Prop in pairs(BrickColorProperties) do
+			if TestProperty(Object, Prop) then
+				AddBrickColorOption(Object, Prop)
+			end
+		end
+	end
+
+	function Search(Object)
+		Gui = Instance.new("ScreenGui")
+		Gui.Parent = game.CoreGui
+		Gui.Name = "Explorer"
+		if Object ~= game then
+			AddOption("Back", function() 
+				Clear(); 
+				Search(Object.Parent) 
+			end, Color3.new(0.5, 1, 1), false)
+		end
+		AddOption("Reload", function() Clear(); Search(Object); end, Color3.new(0.2, 1, 0.2), false)
+		if Cloned then
+			AddOption("Paste", function() Cloned:Clone().Parent = Object; Clear(); Search(Object); end, Color3.new(0.5, 1, 1), false)
+		end
+		if Deleted then
+			AddOption("Undo", function() Deleted.Parent = DeleteParent; Deleted = nil; DeletedParent = nil; Clear(); Search(Object); end, Color3.new(1, 0.6, 0.1), false)
+		end
+		if Object:IsA("Player") then
+			AddOption("Goto Character", function() Clear(); if Object.Character then Search(Object.Character); end end, Color3.new(1, 1, 1), false)
+		end
+		if Object:IsA("LocalScript") then
+			AddOption("EditScript", function() Clear(); ScriptSearch(Object); end, Color3.new(1, 1, 1), false)
+		end
+		if Object:IsA("Terrain") then
+			AddOption("Clear", function() Object:Clear(); end, Color3.new(1, 1, 1), false)
+		end
+		LoadOptions(Object)
+		AddOption("Close", Clear, Color3.new(1, 0.2, 0), false)
+		if not Object:IsA("Workspace") or not Object:IsA("Player") then
+			for Num, Obj in pairs(Object:GetChildren()) do
+				--if not Obj:IsA("BasePart") or not Object.Parent == game.Workspace then
+				if true then
+					if Obj:IsA("LocalScript") then
+						AddButton(Obj, function() Clear(); Search(Obj); end, Color3.new(1, 0, 0), true)
+					elseif Obj:IsA("Script") or Obj:IsA("StarterScript") or Obj:IsA("CoreScript") then
+						AddButton(Obj, function() Clear(); Search(Obj); end, Color3.new(0.5, 0.5, 0.8), true)
+					elseif Obj.Parent == game then
+						AddButton(Obj, function() Clear(); Search(Obj); end, Color3.new(1, 1, 1), false)
+					else
+						AddButton(Obj, function() Clear(); Search(Obj); end, Color3.new(1, 1, 1), true)
+					end
+				end
+			end
+		end
+		function MoveUp(Place, Amount)
+			for i,v in pairs(Place:GetChildren()) do
+				if v:IsA("TextLabel") or v:IsA("TextBox") then
+					v.Position = v.Position + UDim2.new(0,0,0,-Amount)
+				end
+			end
+		end
+		function MoveDown(Place, Amount)
+			for i,v in pairs(Place:GetChildren()) do
+				if v:IsA("TextLabel") or v:IsA("TextBox") then
+					v.Position = v.Position + UDim2.new(0,0,0,Amount)
+				end
+			end
+		end
+		i=0
+		function ScriptSearch(S)
+			Script2 = S
+			Script = Script2.Source
+			Table = {}
+			Enabled = true
+			Gui = Instance.new("ScreenGui")
+			Gui.Parent = game.CoreGui
+			Gui.Name = "Explorer"
+			while Enabled do
+				Start, End = string.find(Script, '\n')
+				print(Start, End)
+				if Start and End then
+					table.insert(Table, string.sub(Script, 1, End))
+					New = string.sub(Script, End+1, string.len(Script))
+					Script = New
+				else
+					Enabled = false
+					table.insert(Table, string.sub(Script, 1, End))
+					print("Finished")
+				end
+			end
+			P = Instance.new("TextLabel")
+			P.Size = UDim2.new(0, 500, 0, 20)
+			P.Text = Script2.Name
+			P.Name = "Script Line"
+			P.Parent = Gui
+			P.BackgroundColor3 = Color3.new(1, 1, 1)
+			P.TextColor3 = Color3.new(0, 0, 0)
+			P.BackgroundTransparency = 0.5
+			P.Position = UDim2.new(0.5, -250, 0, 150+(20*(i-1)))
+			P.TextXAlignment = "Left"
+			i=i+1
+			New = {}
+			for I,Val in pairs(Table) do
+				print(Val)
+				P = Instance.new("TextBox")
+				P.ClearTextOnFocus = false
+				P.Size = UDim2.new(0, 500, 0, 20)
+				P.Text = Val
+				P.Name = "Script Line"
+				P.Parent = Gui
+				P.BackgroundColor3 = Color3.new(1, 1, 1)
+				P.TextColor3 = Color3.new(0, 0, 0)
+				P.BackgroundTransparency = 0.5
+				P.Position = UDim2.new(0.5, -250, 0, 150+(20*(i-1)))
+				P.TextXAlignment = "Left"
+				table.insert(New, P)
+				i=i+1
+			end
+			i=1
+			P = Instance.new("TextButton")
+			P.Size = UDim2.new(0, 20, 0, 20)
+			P.Text = "^"
+			P.Name = "Scroll"
+			P.Parent = Gui
+			P.BackgroundColor3 = Color3.new(1, 1, 1)
+			P.TextColor3 = Color3.new(0, 0, 0)
+			P.BackgroundTransparency = 0.5
+			P.Position = UDim2.new(0.5, -270, 0, 150+(20*(i-1)))
+			P.MouseButton1Click:connect(function() 
+				MoveUp(Gui, -20) 
+			end)
+			i=i+1
+			P = Instance.new("TextButton")
+			P.Size = UDim2.new(0, 20, 0, 20)
+			P.Text = "v"
+			P.Name = "Scroll"
+			P.Parent = Gui
+			P.BackgroundColor3 = Color3.new(1, 1, 1)
+			P.TextColor3 = Color3.new(0, 0, 0)
+			P.BackgroundTransparency = 0.5
+			P.Position = UDim2.new(0.5, -270, 0, 150+(20*(i-1)))
+			P.MouseButton1Click:connect(function() 
+				MoveDown(Gui, -20) 
+			end)
+			i=i+1
+			P = Instance.new("TextButton")
+			P.Size = UDim2.new(0, 20, 0, 20)
+			P.Text = "^^"
+			P.Name = "Scroll"
+			P.Parent = Gui
+			P.BackgroundColor3 = Color3.new(1, 1, 1)
+			P.TextColor3 = Color3.new(0, 0, 0)
+			P.BackgroundTransparency = 0.5
+			P.Position = UDim2.new(0.5, -270, 0, 150+(20*(i-1)))
+			P.MouseButton1Click:connect(function() 
+				MoveUp(Gui, -200) 
+			end)
+			i=i+1
+			P = Instance.new("TextButton")
+			P.Size = UDim2.new(0, 20, 0, 20)
+			P.Text = "vv"
+			P.Name = "Scroll"
+			P.Parent = Gui
+			P.BackgroundColor3 = Color3.new(1, 1, 1)
+			P.TextColor3 = Color3.new(0, 0, 0)
+			P.BackgroundTransparency = 0.5
+			P.Position = UDim2.new(0.5, -270, 0, 150+(20*(i-1)))
+			P.MouseButton1Click:connect(function() 
+				MoveDown(Gui, -200) 
+			end)
+			i=i+1
+			P = Instance.new("TextButton")
+			P.Size = UDim2.new(0, 20, 0, 20)
+			P.Text = "S"
+			P.Name = "Save"
+			P.Parent = Gui
+			P.BackgroundColor3 = Color3.new(0, 1, 0)
+			P.TextColor3 = Color3.new(0, 0, 0)
+			P.BackgroundTransparency = 0.5
+			P.Position = UDim2.new(0.5, -270, 0, 150+(20*(i-1)))
+			P.MouseButton1Click:connect(function()
+				StringS = ""
+				for Num, Obj in pairs(New) do
+					StringS = StringS..Obj.Text..'\n'
+				end
+				S.Source = StringS
+				S.Disabled = true
+				S.Disabled = false
+			end)
+			i=i+1
+			P = Instance.new("TextButton")
+			P.Size = UDim2.new(0, 20, 0, 20)
+			P.Text = "x"
+			P.Name = "Back"
+			P.Parent = Gui
+			P.BackgroundColor3 = Color3.new(1, 0.2, 0)
+			P.TextColor3 = Color3.new(0, 0, 0)
+			P.BackgroundTransparency = 0.5
+			P.Position = UDim2.new(0.5, -270, 0, 150+(20*(i-1)))
+			P.MouseButton1Click:connect(function()
+				Clear()
+				i=0
+				Search(S)
+			end)
+			i=i+1
+		end
+	end
+
+	pgr.MouseButton1Click:connect(function()
+		Clear()
+		Search(game)
+	end)
+end)
+
+Rainbow.Name = "Rainbow"
+Rainbow.Parent = Frame
+Rainbow.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Rainbow.Position = UDim2.new(0.0363867283, 0, 0.425384432, 0)
+Rainbow.Size = UDim2.new(0, 136, 0, 27)
+Rainbow.Font = Enum.Font.TitilliumWeb
+Rainbow.Text = "Rainbow Nametag + Bio"
+Rainbow.TextColor3 = Color3.fromRGB(0, 17, 255)
+	Rainbow.TextSize = 14.000
+	Rainbow.MouseButton1Down:connect(function()
+		while true do
+			local ChangeNOW = "ChangeColor"
+			local key = "\226\128\153b%5m\226\128\176}0\195\1383t\195\154\226\149\147\195\146\226\148\140\226\128\166\226\151\153"
+
+			--red
+			local one = 1
+			local two = 0
+			local three = 0
+
+			game:GetService("ReplicatedStorage").MasterKey:FireServer(ChangeNOW, {one, two, three}, key)
+			wait(.3)
+			--orange
+			local four = 1
+			local five = 0.41568630933762
+			local six = 0
+
+			game:GetService("ReplicatedStorage").MasterKey:FireServer(ChangeNOW, {four, five, six}, key)
+			wait(.3)
+			--yellow
+
+			local seven = 0.98431378602982
+			local eight = 1
+			local nine = 0.054901964962482
+
+			game:GetService("ReplicatedStorage").MasterKey:FireServer(ChangeNOW, {seven, eight, nine}, key)
+			wait(.3)
+			--green
+
+			local ten = 0
+			local eleven = 1
+			local twelve = 0.031372550874949
+
+			game:GetService("ReplicatedStorage").MasterKey:FireServer(ChangeNOW, {ten, eleven, twelve}, key)
+			wait(.3)
+			--blue
+
+			local thirteen = 0.039215687662363
+			local fourteen = 0.086274512112141
+			local fifteen = 1
+
+			game:GetService("ReplicatedStorage").MasterKey:FireServer(ChangeNOW, {thirteen, fourteen, fifteen}, key)
+			wait(.3)
+			--purple?
+
+			local sixteen = 1
+			local seventeen = 0.21960785984993
+			local eighteen = 0.93725496530533
+
+			game:GetService("ReplicatedStorage").MasterKey:FireServer(ChangeNOW, {sixteen, seventeen, eighteen}, key)
+			wait(.3)
+		end
+	end)
+
+Spawn.Name = "Spawn"
+Spawn.Parent = Frame
+Spawn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Spawn.Position = UDim2.new(0.634668648, 0, 0.51607275, 0)
+Spawn.Size = UDim2.new(0, 63, 0, 21)
+Spawn.Font = Enum.Font.Ubuntu
+Spawn.Text = "Spawn Items"
+Spawn.TextColor3 = Color3.fromRGB(1, 5, 255)
+		Spawn.TextSize = 14.000
+		Spawn.MouseButton1Down:connect(function()
+			lib = {}
+			lib.ValidItems = {
+				--Toys
+				"Duck",
+				"Ball",
+				"Football",
+				"Bone",
+				"Stick",
+				--Items
+				"Torch",
+				"Potion",
+				--Foods
+				"Raw Venison",
+				"Raw Fish",
+				"Raw Chicken Leg",
+				"Raw Porkchop",
+				"Raw Beef",
+				"Raw Chicken Breast"
+			}
+			return lib
+		end)
+
+VIW.Name = "VIW"
+VIW.Parent = Frame
+VIW.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+VIW.Position = UDim2.new(0.634668648, 0, 0.281425089, 0)
+VIW.Size = UDim2.new(0, 63, 0, 20)
+VIW.Font = Enum.Font.Ubuntu
+VIW.Text = "free VIW "
+VIW.TextColor3 = Color3.fromRGB(3, 57, 255)
+			VIW.TextSize = 14.000
+			VIW.MouseButton1Down:connect(function()
+				game.ReplicatedStorage.MasterKey:FireServer("AddVIWTag", nil, "\230\139\154\230\136\172i\235\156\146(\238\138\155\201\172XD")
+			end)
+
+AutoBio.Name = "AutoBio"
+AutoBio.Parent = Frame
+AutoBio.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+AutoBio.Position = UDim2.new(0.633708417, 0, 0.728048146, 0)
+AutoBio.Size = UDim2.new(0, 63, 0, 17)
+AutoBio.Font = Enum.Font.Ubuntu
+AutoBio.Text = "Auto Bio"
+AutoBio.TextColor3 = Color3.fromRGB(0, 38, 255)
+				AutoBio.TextSize = 14.000
+				AutoBio.MouseButton1Down:connect(function()
+					_G.msg1 = "Retrying."
+					_G.msg2 = "Retrying.."
+					_G.msg3 = "Retrying..."
+					_G.msg4 = "Retrying...."
+
+					print[[
+    _G.msg1 = "Retrying."
+    _G.msg2 = "Retrying.."
+    _G.msg3 = "Retrying..."
+    _G.msg4 = "Retrying...."
+
+]]
+					while true do
+
+						local ChangeDesc = "ChangeDesc"
+						local ChangeName = "ChangeName"
+						local Key =
+							"\226\128\153\98\37\53\109\226\128\176\125\48\195\138\51\116\195\154\226\149\147\195\146\226\148\140\226\128\166\226\151\153"
+						local Event = game:GetService("ReplicatedStorage").MasterKey
+						--
+						wait(.5)
+						Event:FireServer(ChangeDesc, _G.msg1, Key)
+						wait(.5)
+						Event:FireServer(ChangeDesc, _G.msg2, Key)
+						wait(.5)
+						Event:FireServer(ChangeDesc, _G.msg3, Key)
+						wait(.5)
+						Event:FireServer(ChangeDesc, _G.msg4, Key)
+					end
+				end)
+
+Coins.Name = "Coins"
+Coins.Parent = Frame
+Coins.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Coins.Position = UDim2.new(0.633708477, 0, 0.818591416, 0)
+Coins.Size = UDim2.new(0, 63, 0, 19)
+Coins.Font = Enum.Font.Ubuntu
+Coins.Text = "PAW Coins"
+Coins.TextColor3 = Color3.fromRGB(0, 4, 255)
+					Coins.TextSize = 14.000
+					Coins.MouseButton1Down:connect(function()
+						local lolOk = "\226\135\154\225\155\157i\220\176\219\173\230\155\157u"
+						game:service('ReplicatedStorage').MasterKey:FireServer("Coins", 1000000, lolOk)
+					end)
+
+Customizer.Name = "Customizer"
+Customizer.Parent = Frame
+Customizer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Customizer.Position = UDim2.new(0.634668648, 0, 0.392597735, 0)
+Customizer.Size = UDim2.new(0, 63, 0, 23)
+Customizer.Font = Enum.Font.Ubuntu
+Customizer.Text = "Customizer"
+Customizer.TextColor3 = Color3.fromRGB(0, 46, 255)
+						Customizer.TextSize = 14.000
+						Customizer.MouseButton1Down:connect(function()
+							local CheckIfGui = function()
+								if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Nemo") then
+									return true
+								else
+									return false
+								end
+							end
+							if not CheckIfGui() then
+								game:GetObjects("rbxassetid://7567340663")[1].Parent = game.Players.LocalPlayer.PlayerGui
+								local gui = game.Players.LocalPlayer.PlayerGui:FindFirstChild("ScreenGui")
+								gui.Name = "Nemo"
+							end
+							local ScreenGui = game.Players.LocalPlayer.PlayerGui:FindFirstChild("Nemo")
+
+							local ColorCodes = {
+								White = {R = 255, G = 255, B = 255};
+								Black = {R = 0, G = 0, B = 0};
+								Grey = {R = 128, G = 128, B = 128};
+								Red = {R = 255, G = 0, B = 0};
+								Brown = {R = 77, G = 38, B = 0};
+								Green = {R = 0,G = 255,B = 0};
+								Blue = {R = 0, G = 0, B = 255}
+
+							}
+							local ColorNames = {
+								"White",
+								"Black",
+								"Grey",
+								"Red",
+								"Brown",
+								"Green",
+								"Blue"
+							}
+							local Materials = {
+								Plastic = {Name = "Plastic",BasePart = true,Terrain = false};
+								Wood = {Name = "Wood",BasePart = true,Terrain = false};
+								Slate = {Name = "Slate",BasePart = true,Terrain = true};
+								Concrete = {Name = "Concrete",BasePart = true,Terrain = true};
+								CorrodedMetal = {Name = "CorrodedMetal",BasePart = true,Terrain = false};
+								DiamondPlate = {Name = "DiamondPlate",BasePart = true,Terrain = false};
+								Foil = {Name = "Foil",BasePart = true, Terrain = false};
+								Grass = {Name = "Grass",BasePart = true,Terrain = true};
+								Ice = {Name = "Ice",BasePart = true,Terrain = true};
+								Marble = {Name = "Marble",BasePart = true,Terrain = false};
+								Granite = {Name = "Granite",BasePart = true,Terrain = true};
+								Brick = {Name = "Brick",BasePart = true,Terrain = true};
+								Pebble = {Name = "Pebble",BasePart = true,Terrain = true};
+								Sand = {Name = "Sand",BasePart = true,Terrain = true};
+								Fabric = {Name = "Fabric",BasePart = true,Terrain = false};
+								SmoothPlastic = {Name = "SmoothPlastic",BasePart = true,Terrain = false};
+								Metal = {Name = "Metal",BasePart = true,Terrain = false};
+								WoodPlanks = {Name = "WoodPlanks",BasePart = true,Terrain = true};
+								CobbleStone = {Name = "CobbleStone",BasePart = true,Terrain = true};
+								Air = {Name = "Ait",BasePart = false,Terrain = true};
+								Water = {Name = "Water",BasePart = false,Terrain = true};
+								Rock = {Name = "Rocl",BasePart = false,Terrain = true};
+								Glacier = {Name = "Glacier",BasePart = false,Terrain = true};
+								Snow = {Name = "Snow",BasePart = false,Terrain = true};
+								Sandstone = {Name = "Sandstone",BasePart = false,Terrain = true};
+								Mud = {Name = "Mud",BasePart = false,Terrain = true};
+								Basalt = {Name = "Basalt",BasePart = false,Terrain = true};
+								Ground = {Name = "Ground",BasePart = false,Terrain = true};
+								CrackedLava = {Name = "CrackedLava",BasePart = false,Terrain = true};
+								Neon = {Name = "Neon",BasePart = true,Terrain = false};
+								Glass = {Name = "Glass",BasePart = true,Terrain = false};
+								Asphalt = {Name = "Asphalt",BasePart = false,Terrain = true};
+								LeafyGrass = {Name = "LeafyGrass",BasePart = false,Terrain = true};
+								Salt = {Name = "Salt",BasePart = false,Terrain = true};
+								Limestone = {Name = "Limestone",BasePart = false,Terrain = true};
+								Pavement = {Name = "Pavement",BasePart = false,Terrain = true};
+								ForceField = {Name = "ForceField",BasePart = true,Terrain = false};
+							}
+							local MaterialNames = {
+								"Plastic",
+								"Wood",
+								"Slate",
+								"Concrete",
+								"CorrodedMetal",
+								"DiamondPlate",
+								"Foil",
+								"Grass",
+								"Ice",
+								"Marble",
+								"Granite",
+								"Brick",
+								"Pebble",
+								"Sand",
+								"Fabric",
+								"SmoothPlastic",
+								"Metal",
+								"WoodPlanks",
+								"CobbleStone",
+								"Neon",
+								"Glass",
+								"ForceField"
+							}
+							local BodyParts = {
+								"DragonPrimary",
+								"DragonSecondary",
+								"DragonThird",
+								"DragonClaws",
+								"OceanPrimary",
+								"OceanSecondary",
+								"OceanThird",
+								"ChubbyCheeks",
+								"Fat",
+								"EarFluff",
+								"JawFluff",
+								"ChestFluff",
+								"LegFluff",
+								"Eyebrow1",
+								"Eyebrow2",
+								"Secondary",
+								"Jaw",
+								"RightShoulder",
+								"RightLowerLeg",
+								"RightLowerArm",
+								"RightLeg",
+								"RightFootPaw",
+								"LeftArm",
+								"LeftArmPaw",
+								"LeftCarpal",
+								"LeftFootPaw",
+								"LeftLeg",
+								"LeftLowerArm",
+								"LeftLowerLeg",
+								"LeftShoulder",
+								"RightArm",
+								"RightArmPaw",
+								"RightCarpal",
+								"BackFluff",
+								"TailFluff",
+								"LeftWingStart",
+								"LeftWing2",
+								"LeftWing3",
+								"RightWingStart",
+								"RightWing2",
+								"RightWing3",
+								"EyeLid",
+								"Torso",
+								"Tail1",
+								"Tail2",
+								"Tail3",
+								"Tail5",
+								"Tail6",
+								"RightThigh",
+								"RightEar",
+								"EyeLid",
+								"Head",
+								"Hip",
+								"LeftEar",
+								"LeftThigh",
+								"Muzzle",
+								"Neck",
+								"NeckReal"
+							}
+							local Accessories = {
+								"TorsoF",
+								"HairF",
+								"PierciingsF",
+								"FeetF"
+							}
+
+							local CCMetaTable = {
+								__index = function(table,index)
+									return {
+										R = 255;
+										G = 255;
+										B = 255;
+									}
+								end
+							}setmetatable(ColorCodes,CCMetaTable)
+							local MatMetaTable = {
+								__index = function(table,index)
+									return "Ice"
+								end
+							}setmetatable(Materials,MatMetaTable)
+
+							local FindColor = function(colorName)
+								local Red = ColorCodes[colorName].R
+								local Green = ColorCodes[colorName].G
+								local Blue = ColorCodes[colorName].B
+
+								return Red,Green,Blue
+							end
+
+							local SetMaterial = function(Type,Material,Part)
+								game:GetService("ReplicatedStorage").MasterKey:FireServer(Type, Materials[Material].Name, {[1]=Part})
+							end
+							local Setcolor = function(Part,Color,Type2)
+								game:GetService("ReplicatedStorage").MasterKey:FireServer(Part, Color, Type2)
+							end
+
+							local DeterminationRemotation = function(PartName)
+								if PartName ~= "TorsoF" or PartName ~= "HairF" or PartName ~= "PiercingsF" or PartName ~= "FeetF" then
+									return "Advanced"
+								end
+							end
+
+							for i,v in pairs(BodyParts) do
+								local Button = ScreenGui.ASSETS.SelectionButton
+								local BC = Button:Clone()
+								BC.Name = v
+								BC.Text = v
+								BC.Parent = ScreenGui.UpperTab.Background.Parts
+								BC.Visible = true
+								BC.MouseButton1Down:Connect(function()
+									ScreenGui.UpperTab.Background.Settings.Part.Value = v	
+								end)
+								wait()
+							end
+
+							for i,v in pairs(ColorNames) do
+								local Button = ScreenGui.UpperTab.Parent.ASSETS.ColorButton
+								local BC = Button:Clone()
+								BC.BackgroundColor3 = Color3.fromRGB(FindColor(v))
+								BC.Name = v
+								BC.Text = " "
+								BC.Parent = ScreenGui.UpperTab.Background.ColorFrame
+								BC.Visible = true
+								BC.MouseButton1Down:Connect(function()
+									ScreenGui.UpperTab.Background.Settings.Color.Value = v	
+									Setcolor(ScreenGui.UpperTab.Background.Settings.Part.Value,Color3.fromRGB(FindColor(v)),"Advanced")
+								end)
+								wait()
+							end
+							for i,v in pairs(MaterialNames) do
+								local Button = ScreenGui.UpperTab.Parent.ASSETS.SelectionButton
+								local BC = Button:Clone()
+								BC.Name = v
+								BC.Text = v
+								BC.Parent = ScreenGui.UpperTab.Background.Materials
+								BC.Visible = true
+								BC.MouseButton1Down:Connect(function()
+									ScreenGui.UpperTab.Background.Settings.Material.Value = v
+									Setcolor(ScreenGui.UpperTab.Background.Settings.Part.Value,ScreenGui.UpperTab.Background.Settings.Color.Value,"Advanced")
+									SetMaterial("Material",ScreenGui.UpperTab.Background.Settings.Material.Value,ScreenGui.UpperTab.Background.Settings.Part.Value)
+								end)
+								wait()
+							end
+
+
+							--
+							local UIS = game:GetService("UserInputService")
+							function dragify(Frame)
+								local dragToggle = nil
+								local dragSpeed = 0
+								local dragInput = nil
+								local dragStart = nil
+								local dragPos = nil
+								local startPos = nil
+
+								local function updateInput(input)
+									local Delta = input.Position - dragStart
+									local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+									game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+								end
+								Frame.InputBegan:Connect(function(input)
+									if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+										dragToggle = true
+										dragStart = input.Position
+										startPos = Frame.Position
+										input.Changed:Connect(function()
+											if input.UserInputState == Enum.UserInputState.End then
+												dragToggle = false
+											end
+										end)
+									end
+								end)
+								Frame.InputChanged:Connect(function(input)
+									if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+										dragInput = input
+									end
+								end)
+								game:GetService("UserInputService").InputChanged:Connect(function(input)
+									if input == dragInput and dragToggle then
+										updateInput(input)
+									end
+								end)
+							end
+							spawn(function()
+								dragify(ScreenGui.UpperTab)	
+							end)
+							while wait() do
+								local a = ScreenGui.UpperTab.Background
+								a.Choices.Text = (a.Settings.Part.Value.." -> "..a.Settings.Color.Value.." -> "..a.Settings.Material.Value)
+							end
+						end)
+
+Fates.Name = "Fates"
+Fates.Parent = Frame
+Fates.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Fates.Position = UDim2.new(0.0377814174, 0, 0.626402438, 0)
+Fates.Size = UDim2.new(0, 135, 0, 28)
+Fates.Font = Enum.Font.Ubuntu
+Fates.Text = "Fates Admin Script"
+Fates.TextColor3 = Color3.fromRGB(0, 34, 255)
+							Fates.TextSize = 14.000
+							Fates.MouseButton1Down:connect(function()
+								loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
+							end)
+
+GamePasses.Name = "GamePasses"
+GamePasses.Parent = Frame
+GamePasses.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+GamePasses.Position = UDim2.new(0.0413528681, 0, 0.820511222, 0)
+GamePasses.Size = UDim2.new(0, 135, 0, 24)
+GamePasses.Font = Enum.Font.Ubuntu
+GamePasses.Text = "Gamepasses"
+GamePasses.TextColor3 = Color3.fromRGB(0, 25, 255)
+								GamePasses.TextSize = 14.000
+								Gamepasses.MouseButton1Down:connect(function()
+									game.Players.LocalPlayer.UserId = 112488179
+								end)
+
+Infyeild.Name = "Infyeild"
+Infyeild.Parent = Frame
+Infyeild.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Infyeild.Position = UDim2.new(0.635151386, 0, 0.144617707, 0)
+Infyeild.Size = UDim2.new(0, 63, 0, 26)
+Infyeild.Font = Enum.Font.SourceSans
+Infyeild.Text = "Inf Yeild Script"
+Infyeild.TextColor3 = Color3.fromRGB(0, 38, 255)
+									Infyeild.TextSize = 14.000
+									InfYeild.MouseButton1Down:connect(function()
+										loadstring(game:HttpGet(('https://pastebin.com/raw/tzTXmYf2'),true))()
+									end)
+
+Neon.Name = "Neon"
+Neon.Parent = Frame
+Neon.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Neon.Position = UDim2.new(0.0363867879, 0, 0.220641106, 0)
+Neon.Size = UDim2.new(0, 136, 0, 27)
+Neon.Font = Enum.Font.SourceSans
+Neon.Text = "Neon Wolf"
+Neon.TextColor3 = Color3.fromRGB(0, 0, 255)
+Neon.TextSize = 14.000
+										Neon.MouseButton1Down:connect(function()
+											local Material = "Neon"
+
+											local SkinToneMaterial = {[1]="Material",[2]=Material,[3]={[1]="DragonSecondary",[2]="OceanSecondary",[3]="ChubbyCheeks",[4]="Fat",[5]="EarFluff",[6]="JawFluff",[7]="ChestFluff",[8]="LegFluff",[9]="Eyebrow1",[10]="Eyebrow2",[11]="Secondary",[12]="Jaw",[13]="RightShoulder",[14]="RightLowerLeg",[15]="RightLowerArm",[16]="RightLeg",[17]="RightFootPaw",[18]="LeftArm",[19]="LeftArmPaw",[20]="LeftCarpal",[21]="LeftFootPaw",[22]="LeftLeg",[23]="LeftLowerArm",[24]="LeftLowerLeg",[25]="LeftShoulder",[26]="RightArm",[27]="RightArmPaw",[28]="RightCarpal",[29]="DragonThird",[30]="BackFluff",[31]="TailFluff",[32]="LeftWingStart",[33]="LeftWing2",[34]="LeftWing3",[35]="RightWingStart",[36]="RightWing2",[37]="RightWing3",[38]="EyeLid",[39]="Torso",[40]="Tail1",[41]="Tail2",[42]="Tail3",[43]="Tail5",[44]="Tail6",[45]="RightThigh",[46]="RightEar",[47]="EyeLid",[48]="Head",[49]="Hip",[50]="LeftEar",[51]="LeftThigh",[52]="Muzzle",[53]="Neck",[54]="NeckReal"}}
+											local DragonThirdMaterial = {[1]="Material",[2]=Material,[3]={[29]="DragonThird"}}
+											local DragonSecondaryMaterial = {[1]="Material",[2]=Material,[3]={[29]="DragonSecondary"}}
+											local DragonPrimaryMaterial = {[1]="Material",[2]=Material,[3]={[29]="DragonPrimary"}}
+											local Torso = {[1] = "AccessoryMaterial",[2] = Material,[3] = "TorsoF"}
+											local Hair = {[1] = "AccessoryMaterial",[2] = Material,[3] = "HairF"}
+											local Piercings = {[1] = "AccessoryMaterial",[2] = Material,[3] = "PiercingsF"}
+											local Feet = {[1] = "AccessoryMaterial",[2] = Material,[3] = "FeetF"}
+
+											local Materials = {
+												DragonThirdMaterial,
+												SkinToneMaterial,
+												Torso,
+												Hair,
+												Piercings,
+												Feet,
+												DragonSecondaryMaterial,
+												DragonPrimaryMaterial,
+											}
+
+											local MasterKeyRemote = function(a)
+												game:GetService("ReplicatedStorage").MasterKey:FireServer(unpack(a))
+											end
+
+											for i,v in pairs(Materials) do
+												MasterKeyRemote(v)
+											end
+										end)
