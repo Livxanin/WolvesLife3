@@ -1,41 +1,87 @@
-# Compiled Lua sources
-luac.out
+--Credits Are Given To Syr0nix#3363. 
+-- I have only changed some stuff in the script.
+-- Change the wording in the brackets to change your bio.
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+_G.msg1 = "Your Writing Here"
+_G.msg2 = "Your Writing Here"
+_G.msg3 = "Your Writing Here"
+_G.msg4 = "Your Writing Here"
+_G.msg5 = "Your Writing Here"
+_G.msg6 = "Your Writing Here"
+_G.msg7 = "Your Writing Here"
+_G.msg8 = "Your Writing Here"
+_G.msg9 = "Your Writing Here"
+_G.msg10 = "Your Writing Here"
+_G.msg11 = "Your Writing Here"
+_G.msg12 = "Your Writing Here"
+_G.msg13 = "Your Writing Here"
+_G.msg14 = "Your Writing Here"
+_G.msg15 = "Your Writing Here"
+_G.msg16 = "Your Writing Here"
+_G.msg17 = "Your Writing Here"
+_G.msg17 = "Your Writing Here"
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+print[[
+_G.msg1 = "Your Writing Here"
+_G.msg2 = "Your Writing Here"
+_G.msg3 = "Your Writing Here"
+_G.msg4 = "Your Writing Here"
+_G.msg5 = "Your Writing Here"
+_G.msg6 = "Your Writing Here"
+_G.msg7 = "Your Writing Here"
+_G.msg8 = "Your Writing Here"
+_G.msg9 = "Your Writing Here"
+_G.msg10 = "Your Writing Here"
+_G.msg11 = "Your Writing Here"
+_G.msg12 = "Your Writing Here"
+_G.msg13 = "Your Writing Here"
+_G.msg14 = "Your Writing Here"
+_G.msg15 = "Your Writing Here"
+_G.msg16 = "Your Writing Here"
+_G.msg17 = "Your Writing Here"
+_G.msg17 = "Your Writing Here"
 
-# Precompiled Headers
-*.gch
-*.pch
+]]
+while true do
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+	local ChangeDesc = "ChangeDesc"
+	local ChangeName = "ChangeName"
+	local Key =
+		"\226\128\153\98\37\53\109\226\128\176\125\48\195\138\51\116\195\154\226\149\147\195\146\226\148\140\226\128\166\226\151\153"
+	local Event = game:GetService("ReplicatedStorage").MasterKey
+	--
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg1, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg2, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg3, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg4, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg5, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg6, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg7, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg8, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg9, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg10, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg11, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg12, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg13, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg14, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg15, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg16, Key)
+	wait(.2)
+	Event:FireServer(ChangeDesc, _G.msg17, Key)
+end
