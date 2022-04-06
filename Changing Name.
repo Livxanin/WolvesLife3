@@ -1,0 +1,69 @@
+-- Credits To Syr0nix#3363.
+
+_G.msg1 = "_"
+_G.msg2 = "N_"
+_G.msg3 = "Na_"
+_G.msg4 = "Nam_"
+_G.msg5 = "Name_"
+_G.msg6 = "Name_"
+_G.msg7 = "Name_"
+_G.msg8 = "Nam_"
+_G.msg9 = "Na_"
+_G.msg10 = "N_"
+_G.msg11 = "_"
+_G.msg12 = "_"
+_G.msg13 = "_"
+
+print[[
+_G.msg1 = "_"
+_G.msg2 = "N_"
+_G.msg3 = "Na_"
+_G.msg4 = "Nam_"
+_G.msg5 = "Name_"
+_G.msg6 = "Name_"
+_G.msg7 = "Name_"
+_G.msg8 = "Nam_"
+_G.msg9 = "Na_"
+_G.msg10 = "N_"
+_G.msg11 = "_"
+_G.msg12 = "_"
+_G.msg13 = "_"
+
+
+]]
+while true do
+
+	local ChangeDesc = "ChangeDesc"
+	local ChangeName = "ChangeName"
+	local Key =
+		"\226\128\153\98\37\53\109\226\128\176\125\48\195\138\51\116\195\154\226\149\147\195\146\226\148\140\226\128\166\226\151\153"
+	local Event = game:GetService("ReplicatedStorage").MasterKey
+	--
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg1, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg2, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg3, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg4, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg5, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg6, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg7, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg8, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg9, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg10, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg11, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg12, Key)
+	wait(.2)
+	Event:FireServer(ChangeName, _G.msg13, Key)
+	wait(.2)
+end
